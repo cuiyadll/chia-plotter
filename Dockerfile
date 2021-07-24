@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/suisrc/docker-vscode/vscode:1.54.2
+FROM quay.io/suisrc/vscode:1.54.2
 #FROM python:3.7
 
 RUN apt-get update && \
