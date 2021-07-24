@@ -7,7 +7,7 @@ RUN apt-get update && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
-RUN pip install --extra-index-url https://hosted.chia.net/simple/ chia-blockchain==1.2.0 miniupnpc==2.1 && chia init
+RUN pip install --extra-index-url https://hosted.chia.net/simple/ chia-blockchain==1.2.2 miniupnpc==2.1 && chia init
 
 RUN git clone -b main https://github.com/swar/Swar-Chia-Plot-Manager.git /chia/plotter && \
     cd /chia/plotter && pip install -r requirements.txt
@@ -18,7 +18,7 @@ RUN echo "#!/bin/bash \ncd /chia/plotter && python manager.py \\$1" > /chia/rc.s
 WORKDIR /chia
 
 # 修改启动项
-RUN echo "#!/usr/bin/execlineb -P\ncode-server --bind-addr 0.0.0.0:7000 --disable-telemetry --disable-update-check /chia" > /etc/services.d/vscode/run
+RUN echo "#!/usr/bin/execlineb -P\ncode-server --bind-addr 0.0.0.0:7001 --disable-telemetry --disable-update-check /chia" > /etc/services.d/vscode/run
 
 # 增加启动项/手动启动
 # RUN mkdir -p "/etc/services.d/plotter" && \
